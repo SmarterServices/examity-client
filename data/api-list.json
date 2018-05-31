@@ -1,0 +1,6 @@
+{
+  "getToken": {
+    "endpoint": "/examity/api/token",
+    "method": "POST"
+  }
+}
