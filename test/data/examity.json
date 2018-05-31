@@ -1,0 +1,24 @@
+{
+  "config": {
+    "host": "https://test.examity.com/SmarterServicesapi",
+    "accessToken": "123456456456456"
+  },
+  "getToken": {
+    "payload": {
+      "clientID": "test",
+      "secretKey": "test"
+    },
+    "response": {
+      "valid": {
+        "statusCode": 5000,
+        "message": "Authentication.",
+        "timeStamp": "2018-05-31T08:44:53Z",
+        "authInfo": {
+          "clientID": "",
+          "secretKey": "",
+          "access_token": "1231545154512"
+        }
+      }
+    }
+  }
+}
