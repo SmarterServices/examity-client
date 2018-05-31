@@ -36,10 +36,41 @@ describe('Client', function testClient() {
       return client
         .getToken(payload)
         .then((response)=>{
-          expect(response).to.eql(examityData.getToken.response.valid);
+          expect(response).to.eql(examityData.getToken.response.valid.authInfo.access_token);
         });
     });
     
+  });
+
+  describe('Get Timezone', function testClient() {
+
+    const payload = examityData.getToken.payload;
+
+    before('Create Mocker', function () {
+      examityMock.getEndpointMocker('getTimezone');
+    });
+
+    it('Should list timezone', () => {
+      return client
+        .getTimezone(payload)
+        .then((response)=>{
+          expect(response).to.eql(examityData.getTimezone.response.valid);
+        });
+    });
+
+    it('Should fail to list timezone', () => {
+      examityMock.reset();
+      examityMock.postEndpointMocker('getToken');
+      examityMock.getEndpointMocker('getTimezone', 'INTERNAL_SERVER_ERROR', 500);
+      return client
+        .getTimezone(payload)
+        .then(Promise.reject.bind(Promise))
+        .catch((error)=>{
+          expect(error.statusCode).to.eql(500);
+          expect(error.error.message).to.eql(examityData.getTimezone.response.INTERNAL_SERVER_ERROR.message);
+        });
+    });
+
   });
 
 

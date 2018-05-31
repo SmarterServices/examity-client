@@ -1,7 +1,7 @@
 'use strict';
 const nock = require('nock');
 const examityData = require('../data/examity');
-const EXAMITY_HOST = examityData.config.host;
+const EXAMITY_HOST = examityData.getToken.payload.host;
 const apiList = require('./../../data/api-list');
 
 const ProctorUMocker = {
@@ -9,23 +9,30 @@ const ProctorUMocker = {
 
   /**
    * Mock get endpoint by methodName
-   * @param {String} methodName
-   * @param {String} [responseType]
+   * @param {string} methodName
+   * @param {string} [responseType]
+   * @param {string} [statusCode]
    * @returns {*}
    */
-  getEndpointMocker: function (methodName, responseType = 'valid') {
+  getEndpointMocker: function (methodName, responseType = 'valid', statusCode = 200) {
 
     let scope = nock(EXAMITY_HOST)
       .persist()
       .get(apiList[methodName].endpoint)
       .query(true)
       .reply(function () {
-        return [200, proctorUData[methodName].response[responseType]];
+        return [statusCode, examityData[methodName].response[responseType]];
       });
     this.activeMocks.push(scope);
     return scope;
   },
 
+  /**
+   * Mock post endpoint by methodName
+   * @param {String} methodName
+   * @param {String} [responseType]
+   * @returns {*}
+   */
   postEndpointMocker: function (methodName, responseType = 'valid') {
 
     let scope = nock(EXAMITY_HOST)
