@@ -1,14 +1,17 @@
 'use strict';
 
 const Client = require('./index');
+const credentials = {
+  host: 'https://test.examity.com/SmarterServicesapi',
+  clientID: "",
+  secretKey: ""
+};
 
-const client = new Client({
-  host: 'https://test.examity.com/SmarterServicesapi'
-});
+const client = new Client({});
 
 client
-  .getToken({
-  })
+  // .getToken(credentials)
+  .getTimezone(credentials)
   .then(response => {
     console.log(response);
   })
