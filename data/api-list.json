@@ -1,4 +1,8 @@
 {
+  "getTimezone": {
+    "endpoint": "/examity/api/timezone",
+    "method": "GET"
+  },
   "getToken": {
     "endpoint": "/examity/api/token",
     "method": "POST"
