@@ -1,0 +1,46 @@
+{
+  "getToken": {
+    "payload": {
+      "clientID": "test",
+      "secretKey": "test",
+      "host": "https://test.examity.com/SmarterServicesapi"
+    },
+    "response": {
+      "valid": {
+        "statusCode": 5000,
+        "message": "Authentication.",
+        "timeStamp": "2018-05-31T08:44:53Z",
+        "authInfo": {
+          "clientID": "",
+          "secretKey": "",
+          "access_token": "1231545154512"
+        }
+      }
+    }
+  },
+  "getTimezone": {
+    "response": {
+      "valid": {
+        "statusCode": 4002,
+        "message": "Avaliable Timezones.",
+        "timeStamp": "2018-05-31T13:25:06Z",
+        "timezoneInfo": [
+          {
+            "id": 1,
+            "timezone": "Casablanca (UTC+01:00)"
+          },
+          {
+            "id": 2,
+            "timezone": "Coordinated Universal Time (UTC+00:00) "
+          }
+        ]
+      },
+      "INTERNAL_SERVER_ERROR": {
+        "statusCode": 500,
+        "message": "Internal server error, please contact developers@examity.com",
+        "timeStamp": "2018-05-31T07:32:02Z",
+        "errorInfo": []
+      }
+    }
+  }
+}
