@@ -56,7 +56,7 @@ client
 //   .listUserExam(Object.assign({}, credentials, listUserPayload))
 // .listExamTimes(Object.assign({}, credentials, examTimePayload))
 //   .listCourseExam(Object.assign({}, credentials, listCoursePayload))
-    .scheduleAppointment(Object.assign({}, credentials, schedulePayload, {courseInfo, examInfo}))
+//     .scheduleAppointment(Object.assign({}, credentials, schedulePayload, {courseInfo, examInfo}))
   .rescheduleAppointment(Object.assign({}, credentials, {courseInfo, examInfo, transactionId: 990000015}))
   .then(response => {
     console.log(JSON.stringify(response, null, 2));
