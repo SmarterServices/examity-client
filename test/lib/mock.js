@@ -35,13 +35,16 @@ const ProctorUMocker = {
    * Mock post endpoint by methodName
    * @param {String} methodName
    * @param {String} [responseType]
+   * @param {Object} [params] - Parameter for the path
    * @returns {*}
    */
-  postEndpointMocker: function (methodName, responseType = 'valid') {
+  postEndpointMocker: function (methodName, responseType = 'valid', params = {}) {
+    const urlTemplate = apiList[methodName].endpoint;
+    const url = utils.buildUrl(urlTemplate, params);
 
     let scope = nock(EXAMITY_HOST)
       .persist()
-      .post(apiList[methodName].endpoint)
+      .post(url)
       .reply(function () {
         return [200, examityData[methodName].response[responseType]];
       });
