@@ -6,6 +6,7 @@ const credentials = {
   clientID: '',
   secretKey: '',
   courseId: 'SamepleCourse_101',
+  userId: '101',
   pagenum: 1
 };
 
@@ -13,7 +14,8 @@ const client = new Client({});
 
 client
   // .getToken(credentials)
-  .listCourseExam(credentials)
+  //.listCourseExam(credentials)
+  .listUserExam(credentials)
   .then(response => {
     console.log(response);
   })
