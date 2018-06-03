@@ -139,6 +139,38 @@ describe('Client', function testClient() {
 
   });
 
+  describe('Schedule Appointment', function testClient() {
+
+    const apiName = 'scheduleAppointment';
+    const payload = Object.assign({}, examityData.getToken.payload, examityData[apiName].payload.valid);
+
+    before('Create Mocker', function () {
+      examityMock.postEndpointMocker(apiName);
+    });
+
+    it('Should schedule appointment', () => {
+      return client
+        .scheduleAppointment(payload)
+        .then((response)=>{
+          expect(response).to.eql(examityData[apiName].response.valid);
+        });
+    });
+
+    it('Should fail to schedule Appointment', () => {
+      examityMock.reset();
+      examityMock.postEndpointMocker('getToken');
+      examityMock.postEndpointMocker(apiName, 'ALREADY_SCHEDULED');
+      return client
+        .scheduleAppointment(payload)
+        .then(Promise.reject.bind(Promise))
+        .catch((error)=>{
+          expect(error.statusCode).to.eql(examityData[apiName].response.ALREADY_SCHEDULED.statusCode);
+          expect(error.message).to.eql(examityData[apiName].response.ALREADY_SCHEDULED.message);
+        });
+    });
+
+  });
+
 
   describe('List Exam Under User', function testClient() {
 

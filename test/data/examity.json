@@ -212,6 +212,51 @@
         "timeInfo": []
       }
     }
+  },
+  "scheduleAppointment": {
+    "payload": {
+      "valid": {
+        "userInfo": {
+          "userId": "101",
+          "firstName": "Sample",
+          "lastName": "User",
+          "emailAddress": "sample_user@example.com"
+        },
+        "courseInfo": {
+          "courseId": "SamepleCourse_101",
+          "courseName": "Sample Course"
+        },
+        "examInfo": {
+          "examId": "101",
+          "examName": "Sample Quiz",
+          "examURL": "http://www.proprofs.com",
+          "examDuration": 30,
+          "examPassword": "S@mp!e31024567",
+          "timeZone": "78",
+          "examDate": "2018-06-04T06:00:00Z",
+          "examInstruction": "Rule1|Rule2|Rule3",
+          "examLevel": "1"
+        }
+      }
+    },
+    "response": {
+      "valid": {
+        "statusCode": 4004,
+        "message": "Exam scheduled successfully.",
+        "timeStamp": "2018-06-03T11:20:20Z",
+        "appointmentInfo": {
+          "transactionId": 990000019,
+          "appointmentDate": "2018-06-06T06:00:00Z",
+          "status": "Scheduled"
+        }
+      },
+      "ALREADY_SCHEDULED": {
+        "statusCode": 4007,
+        "message": "Exam is already scheduled on appointment date.",
+        "timeStamp": "2018-06-03T09:47:48Z",
+        "timeInfo": []
+      }
+    }
   }
 
 }

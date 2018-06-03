@@ -7,5 +7,14 @@
   },
   "2005": {
     "message": "Course details not available in current page"
+  },
+  "4005": {
+    "message": "Exam can not be scheduled prior to today's date"
+  },
+  "4006": {
+    "message": "Exam already scheduled in current time window"
+  },
+  "4007": {
+    "message": "Exam is already scheduled on appointment date"
   }
 }
