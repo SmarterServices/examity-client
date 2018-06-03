@@ -45,11 +45,12 @@ const examInfo = {
 };
 
 client
-  // .getToken(credentials)
-  //   .getTimezone(credentials)
-  // .listExamTimes(Object.assign({}, credentials, examTimePayload))
-  //   .listCourseExam(Object.assign({}, credentials, listCoursePayload))
-    .scheduleAppointment(Object.assign({}, credentials, schedulePayload, {courseInfo, examInfo}))
+// .getToken(credentials)
+//   .getTimezone(credentials)
+// .listExamTimes(Object.assign({}, credentials, examTimePayload))
+//   .listCourseExam(Object.assign({}, credentials, listCoursePayload))
+//   .scheduleAppointment(Object.assign({}, credentials, schedulePayload, {courseInfo, examInfo}))
+  .rescheduleAppointment(Object.assign({}, credentials, {courseInfo, examInfo, transactionId: 990000015}))
   .then(response => {
     console.log(response);
   })

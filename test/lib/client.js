@@ -73,7 +73,6 @@ describe('Client', function testClient() {
 
   });
 
-
   describe('List Exam Under Course', function testClient() {
 
     const payload = examityData.listCourseExam.payload;

@@ -18,5 +18,9 @@
   "scheduleAppointment": {
     "endpoint": "/examity/api/schedule",
     "method": "POST"
+  },
+  "rescheduleAppointment": {
+    "endpoint": "/examity/api/reschedule",
+    "method": "PUT"
   }
 }
