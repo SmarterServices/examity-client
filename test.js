@@ -3,12 +3,16 @@
 const Client = require('./index');
 const credentials = {
   host: 'https://test.examity.com/SmarterServicesapi',
-  clientID: "",
-  secretKey: ""
+  clientID: '',
+  secretKey: ''
 };
 
 const client = new Client({});
 
+const listCoursePayload = {
+  courseId: 'SamepleCourse_101',
+  pagenum: 1
+};
 const examTimePayload = {
   userId: '101',
   timeZone: 78,
@@ -43,11 +47,11 @@ const examInfo = {
 client
 // .getToken(credentials)
 //   .getTimezone(credentials)
-//   .listExamTimes(Object.assign({}, credentials, examTimePayload))
+// .listExamTimes(Object.assign({}, credentials, examTimePayload))
+//   .listCourseExam(Object.assign({}, credentials, listCoursePayload))
   .scheduleAppointment(Object.assign({}, credentials, schedulePayload, {courseInfo, examInfo}))
   .then(response => {
-    console.log(JSON.stringify(response, null, 2));
-
+    console.log(response);
   })
   .catch(err => {
     console.error(err);

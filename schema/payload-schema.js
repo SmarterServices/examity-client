@@ -24,6 +24,20 @@ const schema = {
     })
     .required()
     .description('Get Token schema'),
+  listCourseExam: joi
+    .object({
+      courseId: joi
+        .string()
+        .required()
+        .description('Course ID'),
+      pagenum: joi
+        .number()
+        .integer()
+        .required()
+        .description('Page number'),
+    })
+    .required()
+    .description('Get Token schema'),
   listExamTimes: joi
     .object({
       userId: joi
