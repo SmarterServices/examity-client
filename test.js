@@ -11,6 +11,12 @@ const client = new Client({});
 
 const listCoursePayload = {
   courseId: 'SamepleCourse_101',
+  userId: '101',
+  pagenum: 1
+};
+const listUserPayload = {
+  courseId: 'SamepleCourse_101',
+  userId: '101',
   pagenum: 1
 };
 const examTimePayload = {
@@ -45,10 +51,11 @@ const examInfo = {
 };
 
 client
-  // .getToken(credentials)
-  //   .getTimezone(credentials)
-  // .listExamTimes(Object.assign({}, credentials, examTimePayload))
-  //   .listCourseExam(Object.assign({}, credentials, listCoursePayload))
+// .getToken(credentials)
+//   .getTimezone(credentials)
+//   .listUserExam(Object.assign({}, credentials, listUserPayload))
+// .listExamTimes(Object.assign({}, credentials, examTimePayload))
+//   .listCourseExam(Object.assign({}, credentials, listCoursePayload))
     .scheduleAppointment(Object.assign({}, credentials, schedulePayload, {courseInfo, examInfo}))
   .then(response => {
     console.log(response);

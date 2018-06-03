@@ -172,4 +172,38 @@ describe('Client', function testClient() {
   });
 
 
+  describe('List Exam Under User', function testClient() {
+
+    const payload = examityData.listUserExam.payload;
+
+
+    it('Should list exam under user', () => {
+      examityMock.postEndpointMocker('getToken');
+      examityMock.postEndpointMocker('listUserExam', 'valid', payload);
+
+      return client
+        .listUserExam(payload)
+        .then((response) => {
+          expect(response).to.eql(examityData.listCourseExam.response.valid);
+
+          examityMock.reset();
+        });
+    });
+
+    it('Should fail to list exam under user for error response from examity', () => {
+      examityMock.postEndpointMocker('getToken');
+      examityMock.postEndpointMocker('listUserExam', 'INTERNAL_SERVER_ERROR', payload);
+      return client
+        .listUserExam(payload)
+        .catch((error) => {
+          expect(error.statusCode).to.eql(500);
+          expect(error.error.message).to.eql(examityData.getTimezone.response.INTERNAL_SERVER_ERROR.message);
+
+          examityMock.reset();
+        });
+    });
+
+  });
+
+
 });

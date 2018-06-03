@@ -11,6 +11,10 @@
     "endpoint": "/examity/api/exams/course/{courseId}/page/{pagenum}",
     "method": "GET"
   },
+  "listUserExam": {
+    "endpoint": "/examity/api/exams/page/{pagenum}",
+    "method": "POST"
+  },
   "listExamTimes": {
     "endpoint": "/examity/api/examtimes",
     "method": "POST"
