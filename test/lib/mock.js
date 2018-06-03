@@ -3,6 +3,7 @@ const nock = require('nock');
 const examityData = require('../data/examity');
 const EXAMITY_HOST = examityData.getToken.payload.host;
 const apiList = require('./../../data/api-list');
+const utils = require('./../../lib/helpers/utils');
 
 const ProctorUMocker = {
   activeMocks: [],
@@ -12,13 +13,16 @@ const ProctorUMocker = {
    * @param {string} methodName
    * @param {string} [responseType]
    * @param {string} [statusCode]
+   * @param {Object} [params]
    * @returns {*}
    */
-  getEndpointMocker: function (methodName, responseType = 'valid', statusCode = 200) {
+  getEndpointMocker: function (methodName, responseType = 'valid', statusCode = 200, params = {}) {
+    const urlTemplate = apiList[methodName].endpoint;
+    const url = utils.buildUrl(urlTemplate, params);
 
     let scope = nock(EXAMITY_HOST)
       .persist()
-      .get(apiList[methodName].endpoint)
+      .get(url)
       .query(true)
       .reply(function () {
         return [statusCode, examityData[methodName].response[responseType]];

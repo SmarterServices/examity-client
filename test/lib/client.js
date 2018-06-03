@@ -7,7 +7,7 @@ const expect = require('chai').expect;
 const examityMock = require('./mock');
 
 describe('Client', function testClient() {
-  const config = examityData.config ;
+  const config = examityData.config;
   let client;
 
   before('Mock', function () {
@@ -35,11 +35,11 @@ describe('Client', function testClient() {
     it('Should list token', () => {
       return client
         .getToken(payload)
-        .then((response)=>{
+        .then((response) => {
           expect(response).to.eql(examityData.getToken.response.valid.authInfo.access_token);
         });
     });
-    
+
   });
 
   describe('Get Timezone', function testClient() {
@@ -53,7 +53,7 @@ describe('Client', function testClient() {
     it('Should list timezone', () => {
       return client
         .getTimezone(payload)
-        .then((response)=>{
+        .then((response) => {
           expect(response).to.eql(examityData.getTimezone.response.valid);
         });
     });
@@ -65,9 +65,43 @@ describe('Client', function testClient() {
       return client
         .getTimezone(payload)
         .then(Promise.reject.bind(Promise))
-        .catch((error)=>{
+        .catch((error) => {
           expect(error.statusCode).to.eql(500);
           expect(error.error.message).to.eql(examityData.getTimezone.response.INTERNAL_SERVER_ERROR.message);
+        });
+    });
+
+  });
+
+
+  describe('List Exam Under Course', function testClient() {
+
+    const payload = examityData.listCourseExam.payload;
+
+
+    it('Should list exam under course', () => {
+      examityMock.postEndpointMocker('getToken');
+      examityMock.getEndpointMocker('listCourseExam', 'valid', 200, payload);
+
+      return client
+        .listCourseExam(payload)
+        .then((response) => {
+          expect(response).to.eql(examityData.listCourseExam.response.valid);
+
+          examityMock.reset();
+        });
+    });
+
+    it('Should fail to list exam under course for error response from examity', () => {
+      examityMock.postEndpointMocker('getToken');
+      examityMock.getEndpointMocker('listCourseExam', 'INTERNAL_SERVER_ERROR', 500, payload);
+      return client
+        .listCourseExam(payload)
+        .catch((error) => {
+          expect(error.statusCode).to.eql(500);
+          expect(error.error.message).to.eql(examityData.getTimezone.response.INTERNAL_SERVER_ERROR.message);
+
+          examityMock.reset();
         });
     });
 
