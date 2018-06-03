@@ -39,7 +39,7 @@ describe('Client', function testClient() {
           expect(response).to.eql(examityData.getToken.response.valid.authInfo.access_token);
         });
     });
-    
+
   });
 
   describe('Get Timezone', function testClient() {
@@ -68,6 +68,37 @@ describe('Client', function testClient() {
         .catch((error)=>{
           expect(error.statusCode).to.eql(500);
           expect(error.error.message).to.eql(examityData.getTimezone.response.INTERNAL_SERVER_ERROR.message);
+        });
+    });
+
+  });
+
+  describe('List Exam Times', function testClient() {
+
+    const payload = Object.assign({}, examityData.getToken.payload, examityData.listExamTimes.payload.valid);
+
+    before('Create Mocker', function () {
+      examityMock.postEndpointMocker('listExamTimes');
+    });
+
+    it('Should list timezone', () => {
+      return client
+        .listExamTimes(payload)
+        .then((response)=>{
+          expect(response).to.eql(examityData.listExamTimes.response.valid);
+        });
+    });
+
+    it('Should fail to list timezone', () => {
+      examityMock.reset();
+      examityMock.postEndpointMocker('getToken');
+      examityMock.postEndpointMocker('listExamTimes', 'UNAVAILABLE_INFORMATION');
+      return client
+        .listExamTimes(payload)
+        .then(Promise.reject.bind(Promise))
+        .catch((error)=>{
+          expect(error.statusCode).to.eql(examityData.listExamTimes.response.UNAVAILABLE_INFORMATION.statusCode);
+          expect(error.message).to.eql(examityData.listExamTimes.response.UNAVAILABLE_INFORMATION.message);
         });
     });
 
