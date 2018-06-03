@@ -156,7 +156,7 @@ describe('Client', function testClient() {
         });
     });
 
-    it('Should fail to schedule timezone', () => {
+    it('Should fail to schedule Appointment', () => {
       examityMock.reset();
       examityMock.postEndpointMocker('getToken');
       examityMock.postEndpointMocker(apiName, 'ALREADY_SCHEDULED');
