@@ -257,6 +257,50 @@
         "timeInfo": []
       }
     }
+  },
+  "rescheduleAppointment": {
+    "payload": {
+      "valid": {
+        "transactionId": 990000015,
+        "courseInfo": {
+          "courseId": "SamepleCourse_101",
+          "courseName": "Sample Course"
+        },
+        "examInfo": {
+          "examId": "101",
+          "examName": "Sample Quiz",
+          "examURL": "http://www.proprofs.com",
+          "examDuration": 30,
+          "examPassword": "S@mp!e31024567",
+          "timeZone": "78",
+          "examDate": "2018-06-04T06:00:00Z",
+          "examInstruction": "Rule1|Rule2|Rule3",
+          "examLevel": "1"
+        }
+      }
+    },
+    "response": {
+      "valid": {
+        "statusCode": 4013,
+        "message": "Exam rescheduled successfully.",
+        "timeStamp": "2018-06-03T12:05:10Z",
+        "appointmentInfo": {
+          "transactionId": 990000015,
+          "appointmentDate": "2018-06-09T06:00:00Z",
+          "status": "Rescheduled"
+        }
+      },
+      "NOT_ALLOWED": {
+        "statusCode": 4014,
+        "message": "Exam already scheduled in current time window. Rescheduling is not allowed.",
+        "timeStamp": "2018-06-03T12:05:29Z",
+        "appointmentInfo": {
+          "transactionId": 0,
+          "appointmentDate": "",
+          "status": ""
+        }
+      }
+    }
   }
 
 }

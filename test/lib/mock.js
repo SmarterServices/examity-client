@@ -52,6 +52,24 @@ const ProctorUMocker = {
     return scope;
   },
 
+  /**
+   * Mock put endpoint by methodName
+   * @param {String} methodName
+   * @param {String} [responseType]
+   * @returns {*} - Scope for the mock
+   */
+  putEndpointMocker: function (methodName, responseType = 'valid') {
+
+    let scope = nock(EXAMITY_HOST)
+      .persist()
+      .put(apiList[methodName].endpoint)
+      .reply(function () {
+        return [200, examityData[methodName].response[responseType]];
+      });
+    this.activeMocks.push(scope);
+    return scope;
+  },
+
   reset: nock.cleanAll,
 
   /**

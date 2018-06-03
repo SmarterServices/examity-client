@@ -16,5 +16,21 @@
   },
   "4007": {
     "message": "Exam is already scheduled on appointment date"
+  },
+  "4011": {
+    "message": "Unable to schedule /reschedule exam"
+  },
+  "4012": {
+    "message": "Transaction details not found."
+  },
+  "4014": {
+    "message": "Exam already scheduled in current time window. Rescheduling is not allowed"
+  },
+  "4015": {
+    "message": "Exam can not be rescheduled prior to today's date."
+  },
+  "4016": {
+    "message": "Exam is already in progress. Rescheduling is not allowed."
   }
+
 }

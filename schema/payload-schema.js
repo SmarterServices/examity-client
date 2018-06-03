@@ -172,6 +172,81 @@ const schema = {
     })
     .required()
     .description('Schedule schema'),
+  rescheduleAppointment: joi
+    .object({
+      transactionId : joi
+        .number()
+        .integer()
+        .description('AppointmentId of the Exam.'),
+      courseInfo: joi
+        .object({
+          courseId: joi
+            .string()
+            .required()
+            .description('ID of the Course'),
+          courseName: joi
+            .string()
+            .required()
+            .description('Name of the Course')
+        })
+        .required()
+        .description('Course Details'),
+      examInfo: joi
+        .object({
+          examId: joi
+            .string()
+            .required()
+            .description('ID of the exam'),
+          examName: joi
+            .string()
+            .required()
+            .description('Title of the exam'),
+          examURL: joi
+            .string()
+            .uri()
+            .required()
+            .description('URL of the exam'),
+          examDuration: joi
+            .number()
+            .integer()
+            .required()
+            .description('Time limit to take the exam in minutes'),
+          examPassword: joi
+            .string()
+            .allow(null, '')
+            .description('Restricts access to the exam with a password'),
+          examUserName : joi
+            .string()
+            .allow(null, '')
+            .description('Restricts access to the exam with a username.'),
+          timeZone: joi
+            .number()
+            .integer()
+            .required()
+            .description('ID of the timezone'),
+          examDate: joi
+            .string()
+            .isoDate()
+            .regex(/.*Z/, 'ISO time format in utc zone')
+            .example(utils.dateTemplate(), 'date template')
+            .required()
+            .description('Appointment date'),
+          examInstruction  : joi
+            .string()
+            .allow(null, '')
+            .example('Rule1|Rule2|Rule3')
+            .description('Instructions to be followed, separated by "|"'),
+          examLevel  : joi
+            .string()
+            .allow(null, '')
+            .valid('1', '2', '3', '4', '5')
+            .description('Enter the Exam Level value')
+        })
+        .required()
+        .description('Exam details'),
+    })
+    .required()
+    .description('Reschedule schema')
 
 };
 
