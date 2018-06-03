@@ -10,11 +10,11 @@ const ProctorUMocker = {
 
   /**
    * Mock get endpoint by methodName
-   * @param {string} methodName
-   * @param {string} [responseType]
-   * @param {string} [statusCode]
-   * @param {Object} [params]
-   * @returns {*}
+   * @param {string} methodName - Name of the method to mock
+   * @param {string} [responseType] - Response type
+   * @param {string} [statusCode] - Status code
+   * @param {Object} [params] - Parameter for the path
+   * @returns {*} - Scope for the mock
    */
   getEndpointMocker: function (methodName, responseType = 'valid', statusCode = 200, params = {}) {
     const urlTemplate = apiList[methodName].endpoint;
