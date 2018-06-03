@@ -9,9 +9,17 @@ const credentials = {
 
 const client = new Client({});
 
+const examTimePayload = {
+  userId: '101',
+  timeZone: 78,
+  examDate: '06/03/2018',
+  examDuration: 10
+};
+
 client
-  // .getToken(credentials)
-  .getTimezone(credentials)
+// .getToken(credentials)
+//   .getTimezone(credentials)
+  .listExamTimes(Object.assign({}, credentials, examTimePayload))
   .then(response => {
     console.log(response);
   })
