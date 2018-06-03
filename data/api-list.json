@@ -10,5 +10,9 @@
   "listExamTimes": {
     "endpoint": "/examity/api/examtimes",
     "method": "POST"
+  },
+  "schedule": {
+    "endpoint": "/examity/api/schedule",
+    "method": "POST"
   }
 }
