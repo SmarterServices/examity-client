@@ -113,6 +113,7 @@ describe('Client', function testClient() {
 
     before('Create Mocker', function () {
       examityMock.postEndpointMocker('listExamTimes');
+      examityMock.postEndpointMocker('getToken');
     });
 
     it('Should list timezone', () => {
