@@ -170,5 +170,36 @@ describe('Client', function testClient() {
 
   });
 
+  describe('Reschedule Appointment', function testClient() {
+
+    const apiName = 'rescheduleAppointment';
+    const payload = Object.assign({}, examityData.getToken.payload, examityData[apiName].payload.valid);
+
+    before('Create Mocker', function () {
+      examityMock.putEndpointMocker(apiName);
+    });
+
+    it('Should reschedule appointment', () => {
+      return client
+        .rescheduleAppointment(payload)
+        .then((response)=>{
+          expect(response).to.eql(examityData[apiName].response.valid);
+        });
+    });
+
+    it('Should fail to reschedule appointment', () => {
+      examityMock.reset();
+      examityMock.postEndpointMocker('getToken');
+      examityMock.putEndpointMocker(apiName, 'NOT_ALLOWED');
+      return client
+        .rescheduleAppointment(payload)
+        .then(Promise.reject.bind(Promise))
+        .catch((error)=>{
+          expect(error.statusCode).to.eql(examityData[apiName].response.NOT_ALLOWED.statusCode);
+          expect(error.message).to.eql(examityData[apiName].response.NOT_ALLOWED.message);
+        });
+    });
+
+  });
 
 });

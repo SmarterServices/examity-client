@@ -52,7 +52,7 @@ client
 //   .scheduleAppointment(Object.assign({}, credentials, schedulePayload, {courseInfo, examInfo}))
   .rescheduleAppointment(Object.assign({}, credentials, {courseInfo, examInfo, transactionId: 990000015}))
   .then(response => {
-    console.log(response);
+    console.log(JSON.stringify(response, null, 2));
   })
   .catch(err => {
     console.error(err);
