@@ -23,7 +23,30 @@ const schema = {
       .description('Access Token for request')
   })
     .required()
-    .description('Get Token schema')
+    .description('Get Token schema'),
+  listExamTimes: joi
+    .object({
+      userId: joi
+        .string()
+        .required()
+        .description('ID of the user'),
+      timeZone: joi
+        .number()
+        .integer()
+        .required()
+        .description('ID of the timezone'),
+      examDate: joi
+        .string()
+        .required()
+        .description('Date of the exam to list'),
+      examDuration: joi
+        .number()
+        .integer()
+        .required()
+        .description('Time limit to take the exam in minutes')
+    })
+    .required()
+    .description('List exam Times schema')
 };
 
 module.exports = schema;
