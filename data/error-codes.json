@@ -1,5 +1,11 @@
 {
   "4001": {
     "message": "ExamTime information not avaliable"
+  },
+  "2008": {
+    "message": "Course details not found"
+  },
+  "2005": {
+    "message": "Course details not available in current page"
   }
 }

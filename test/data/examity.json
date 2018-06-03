@@ -42,5 +42,59 @@
         "errorInfo": []
       }
     }
+  },
+  "listCourseExam": {
+    "payload": {
+      "clientID": "test",
+      "secretKey": "test",
+      "host": "https://test.examity.com/SmarterServicesapi",
+      "courseId": "SamepleCourse_101",
+      "pagenum": 1
+    },
+    "response": {
+      "valid": {
+        "statusCode": 3006,
+        "message": "User Appointmentstaus.",
+        "timeStamp": "2018-06-03T10:46:45Z",
+        "appointmentStatusInfo": {
+          "currentpage": 1,
+          "pagecount": 1,
+          "appointmentStatus": [
+            {
+              "userInfo": {
+                "userId": "101",
+                "firstName": "Sample",
+                "lastName": "User",
+                "emailAddress": "sample_user@example.com"
+              },
+              "appointmentInfo": {
+                "transactionId": "990000014",
+                "courseId": "SamepleCourse_101",
+                "courseName": "Sample Course",
+                "examId": "101",
+                "examName": "Sample Quiz",
+                "examURL": "http://www.proprofs.com",
+                "examDuration": 30,
+                "examPassword": "S@mp!e31024567",
+                "examUserName": "",
+                "timeZone": "78",
+                "examDate": "2018-06-03T06:45:00",
+                "examInstruction": "Rule1|Rule2|Rule3",
+                "status": "Active",
+                "examLevel": null,
+                "examStatus": "No-show",
+                "flaginfo": []
+              }
+            }
+          ]
+        }
+      },
+      "INTERNAL_SERVER_ERROR": {
+        "statusCode": 500,
+        "message": "Internal server error, please contact developers@examity.com",
+        "timeStamp": "2018-05-31T07:32:02Z",
+        "errorInfo": []
+      }
+    }
   }
 }

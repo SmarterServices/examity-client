@@ -3,15 +3,17 @@
 const Client = require('./index');
 const credentials = {
   host: 'https://test.examity.com/SmarterServicesapi',
-  clientID: "",
-  secretKey: ""
+  clientID: '',
+  secretKey: '',
+  courseId: 'SamepleCourse_101',
+  pagenum: 1
 };
 
 const client = new Client({});
 
 client
   // .getToken(credentials)
-  .getTimezone(credentials)
+  .listCourseExam(credentials)
   .then(response => {
     console.log(response);
   })

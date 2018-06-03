@@ -6,5 +6,9 @@
   "getToken": {
     "endpoint": "/examity/api/token",
     "method": "POST"
+  },
+  "listCourseExam": {
+    "endpoint": "/examity/api/exams/course/{courseId}/page/{pagenum}",
+    "method": "GET"
   }
 }
