@@ -16,7 +16,7 @@ const listCoursePayload = {
 const examTimePayload = {
   userId: '101',
   timeZone: 78,
-  examDate: '06/02/2018',
+  examDate: '06/03/2018',
   examDuration: 10
 };
 
@@ -39,17 +39,17 @@ const examInfo = {
   examDuration: 30,
   examPassword: 'S@mp!e31024567',
   timeZone: 78,
-  examDate: '2018-06-07T06:00:00Z',
+  examDate: '2018-06-08T06:00:00Z',
   examInstruction: 'Rule1',
   examLevel: '1'
 };
 
 client
-// .getToken(credentials)
-//   .getTimezone(credentials)
-// .listExamTimes(Object.assign({}, credentials, examTimePayload))
-//   .listCourseExam(Object.assign({}, credentials, listCoursePayload))
-  .scheduleAppointment(Object.assign({}, credentials, schedulePayload, {courseInfo, examInfo}))
+  // .getToken(credentials)
+  //   .getTimezone(credentials)
+  // .listExamTimes(Object.assign({}, credentials, examTimePayload))
+  //   .listCourseExam(Object.assign({}, credentials, listCoursePayload))
+    .scheduleAppointment(Object.assign({}, credentials, schedulePayload, {courseInfo, examInfo}))
   .then(response => {
     console.log(response);
   })

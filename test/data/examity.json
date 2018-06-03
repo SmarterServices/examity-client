@@ -158,7 +158,7 @@
       }
     }
   },
-  "schedule": {
+  "scheduleAppointment": {
     "payload": {
       "valid": {
         "userInfo": {
