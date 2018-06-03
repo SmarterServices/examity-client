@@ -107,6 +107,38 @@ describe('Client', function testClient() {
 
   });
 
+  describe('List Exam Times', function testClient() {
+
+    const payload = Object.assign({}, examityData.getToken.payload, examityData.listExamTimes.payload.valid);
+
+    before('Create Mocker', function () {
+      examityMock.postEndpointMocker('listExamTimes');
+      examityMock.postEndpointMocker('getToken');
+    });
+
+    it('Should list timezone', () => {
+      return client
+        .listExamTimes(payload)
+        .then((response)=>{
+          expect(response).to.eql(examityData.listExamTimes.response.valid);
+        });
+    });
+
+    it('Should fail to list timezone', () => {
+      examityMock.reset();
+      examityMock.postEndpointMocker('getToken');
+      examityMock.postEndpointMocker('listExamTimes', 'UNAVAILABLE_INFORMATION');
+      return client
+        .listExamTimes(payload)
+        .then(Promise.reject.bind(Promise))
+        .catch((error)=>{
+          expect(error.statusCode).to.eql(examityData.listExamTimes.response.UNAVAILABLE_INFORMATION.statusCode);
+          expect(error.message).to.eql(examityData.listExamTimes.response.UNAVAILABLE_INFORMATION.message);
+        });
+    });
+
+  });
+
 
   describe('List Exam Under User', function testClient() {
 
