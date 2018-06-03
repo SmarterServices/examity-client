@@ -11,7 +11,7 @@
     "endpoint": "/examity/api/examtimes",
     "method": "POST"
   },
-  "schedule": {
+  "scheduleAppointment": {
     "endpoint": "/examity/api/schedule",
     "method": "POST"
   }

@@ -22,31 +22,32 @@ const schedulePayload = {
     firstName: 'Sample',
     lastName: 'User',
     emailAddress: 'sample_user@example.com'
-  },
-  courseInfo: {
-    courseId: 'SamepleCourse_101',
-    courseName: 'Sample Course'
-  },
-  examInfo: {
-    examId: '101',
-    examName: 'Sample Quiz',
-    examURL: 'http://www.proprofs.com',
-    examDuration: 30,
-    examPassword: 'S@mp!e31024567',
-    timeZone: 78,
-    examDate: '2018-06-05T06:00:00Z',
-    examInstruction: 'Rule1',
-    examLevel: '1'
   }
+};
+const courseInfo = {
+  courseId: 'SamepleCourse_101',
+  courseName: 'Sample Course'
+};
+const examInfo = {
+  examId: '102',
+  examName: 'Sample Quiz',
+  examURL: 'http://www.proprofs.com',
+  examDuration: 30,
+  examPassword: 'S@mp!e31024567',
+  timeZone: 78,
+  examDate: '2018-06-07T06:00:00Z',
+  examInstruction: 'Rule1',
+  examLevel: '1'
 };
 
 client
 // .getToken(credentials)
 //   .getTimezone(credentials)
 //   .listExamTimes(Object.assign({}, credentials, examTimePayload))
-  .schedule(Object.assign({}, credentials, schedulePayload))
+  .scheduleAppointment(Object.assign({}, credentials, schedulePayload, {courseInfo, examInfo}))
   .then(response => {
-    console.log(response);
+    console.log(JSON.stringify(response, null, 2));
+
   })
   .catch(err => {
     console.error(err);

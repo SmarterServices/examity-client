@@ -106,7 +106,7 @@ describe('Client', function testClient() {
 
   describe('Schedule Appointment', function testClient() {
 
-    const apiName = 'schedule';
+    const apiName = 'scheduleAppointment';
     const payload = Object.assign({}, examityData.getToken.payload, examityData[apiName].payload.valid);
 
     before('Create Mocker', function () {
@@ -115,7 +115,7 @@ describe('Client', function testClient() {
 
     it('Should schedule appointment', () => {
       return client
-        .schedule(payload)
+        .scheduleAppointment(payload)
         .then((response)=>{
           expect(response).to.eql(examityData[apiName].response.valid);
         });
@@ -126,7 +126,7 @@ describe('Client', function testClient() {
       examityMock.postEndpointMocker('getToken');
       examityMock.postEndpointMocker(apiName, 'ALREADY_SCHEDULED');
       return client
-        .schedule(payload)
+        .scheduleAppointment(payload)
         .then(Promise.reject.bind(Promise))
         .catch((error)=>{
           expect(error.statusCode).to.eql(examityData[apiName].response.ALREADY_SCHEDULED.statusCode);

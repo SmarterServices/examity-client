@@ -47,7 +47,7 @@ const schema = {
     })
     .required()
     .description('List exam Times schema'),
-  schedule: joi
+  scheduleAppointment: joi
     .object({
       userInfo: joi
         .object({
