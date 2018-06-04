@@ -227,7 +227,7 @@ describe('Client', function testClient() {
         .listUserExam(payload)
         .catch((error) => {
           expect(error.statusCode).to.eql(500);
-          expect(error.error.message).to.eql(examityData.getTimezone.response.INTERNAL_SERVER_ERROR.message);
+          expect(error.message).to.eql(examityData.listUserExam.response.INTERNAL_SERVER_ERROR.message);
 
           examityMock.reset();
         });
