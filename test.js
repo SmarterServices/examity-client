@@ -39,7 +39,7 @@ const courseInfo = {
   courseName: 'Sample Course'
 };
 const examInfo = {
-  examId: '102',
+  examId: '103',
   examName: 'Sample Quiz',
   examURL: 'http://www.proprofs.com',
   examDuration: 30,
@@ -52,12 +52,13 @@ const examInfo = {
 
 client
 // .getToken(credentials)
-//   .getTimezone(credentials)
-//   .listUserExam(Object.assign({}, credentials, listUserPayload))
+// .getTimezone(credentials)
+// .listUserExam(Object.assign({}, credentials, listUserPayload))
 // .listExamTimes(Object.assign({}, credentials, examTimePayload))
-//   .listCourseExam(Object.assign({}, credentials, listCoursePayload))
-//     .scheduleAppointment(Object.assign({}, credentials, schedulePayload, {courseInfo, examInfo}))
-  .rescheduleAppointment(Object.assign({}, credentials, {courseInfo, examInfo, transactionId: 990000015}))
+// .listCourseExam(Object.assign({}, credentials, listCoursePayload))
+// .scheduleAppointment(Object.assign({}, credentials, schedulePayload, {courseInfo, examInfo}))
+// .rescheduleAppointment(Object.assign({}, credentials, {courseInfo, examInfo, transactionId: 990000015}))
+  .cancelAppointment(Object.assign({}, credentials, {transactionId: 990000015}))
   .then(response => {
     console.log(JSON.stringify(response, null, 2));
   })

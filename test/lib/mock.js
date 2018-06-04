@@ -70,6 +70,27 @@ const ProctorUMocker = {
     return scope;
   },
 
+  /**
+   * Mock delete endpoint by methodName
+   * @param {String} methodName - Name of request method
+   * @param {String} [responseType] - Type of response
+   * @param {Object} params - Path parameters
+   * @returns {*} - Scope for the mock
+   */
+  deleteEndpointMocker(methodName, responseType = 'valid', params) {
+    const urlTemplate = apiList[methodName].endpoint;
+    const url = utils.buildUrl(urlTemplate, params);
+
+    let scope = nock(EXAMITY_HOST)
+      .persist()
+      .delete(url)
+      .reply(function () {
+        return [200, examityData[methodName].response[responseType]];
+      });
+    this.activeMocks.push(scope);
+    return scope;
+  },
+
   reset: nock.cleanAll,
 
   /**

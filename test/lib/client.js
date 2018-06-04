@@ -227,7 +227,41 @@ describe('Client', function testClient() {
         .listUserExam(payload)
         .catch((error) => {
           expect(error.statusCode).to.eql(500);
-          expect(error.error.message).to.eql(examityData.getTimezone.response.INTERNAL_SERVER_ERROR.message);
+          expect(error.message).to.eql(examityData.listUserExam.response.INTERNAL_SERVER_ERROR.message);
+
+          examityMock.reset();
+        });
+    });
+
+  });
+
+
+  describe('Cancel Appointment', function testClient() {
+
+    const payload = examityData.cancelAppointment.payload;
+
+
+    it('Should cancel appointment under exam', () => {
+      examityMock.postEndpointMocker('getToken');
+      examityMock.deleteEndpointMocker('cancelAppointment', 'valid', payload);
+
+      return client
+        .cancelAppointment(payload)
+        .then((response) => {
+          expect(response).to.eql(examityData.cancelAppointment.response.valid);
+
+          examityMock.reset();
+        });
+    });
+
+    it('Should fail to cancel appointment for error response from examity', () => {
+      examityMock.postEndpointMocker('getToken');
+      examityMock.deleteEndpointMocker('cancelAppointment', 'INTERNAL_SERVER_ERROR', payload);
+      return client
+        .cancelAppointment(payload)
+        .catch((error) => {
+          expect(error.statusCode).to.eql(500);
+          expect(error.message).to.eql(examityData.listUserExam.response.INTERNAL_SERVER_ERROR.message);
 
           examityMock.reset();
         });
