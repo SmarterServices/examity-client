@@ -140,7 +140,7 @@ const schema = {
             .string()
             .allow(null, '')
             .description('Restricts access to the exam with a password'),
-          examUserName : joi
+          examUserName: joi
             .string()
             .allow(null, '')
             .description('Restricts access to the exam with a username.'),
@@ -156,12 +156,12 @@ const schema = {
             .example(utils.dateTemplate(), 'date template')
             .required()
             .description('Appointment date'),
-          examInstruction  : joi
+          examInstruction: joi
             .string()
             .allow(null, '')
             .example('Rule1|Rule2|Rule3')
             .description('Instructions to be followed, separated by "|"'),
-          examLevel  : joi
+          examLevel: joi
             .string()
             .allow(null, '')
             .valid('1', '2', '3', '4', '5')
@@ -174,7 +174,7 @@ const schema = {
     .description('Schedule schema'),
   rescheduleAppointment: joi
     .object({
-      transactionId : joi
+      transactionId: joi
         .number()
         .integer()
         .description('AppointmentId of the Exam.'),
@@ -215,7 +215,7 @@ const schema = {
             .string()
             .allow(null, '')
             .description('Restricts access to the exam with a password'),
-          examUserName : joi
+          examUserName: joi
             .string()
             .allow(null, '')
             .description('Restricts access to the exam with a username.'),
@@ -231,12 +231,12 @@ const schema = {
             .example(utils.dateTemplate(), 'date template')
             .required()
             .description('Appointment date'),
-          examInstruction  : joi
+          examInstruction: joi
             .string()
             .allow(null, '')
             .example('Rule1|Rule2|Rule3')
             .description('Instructions to be followed, separated by "|"'),
-          examLevel  : joi
+          examLevel: joi
             .string()
             .allow(null, '')
             .valid('1', '2', '3', '4', '5')
@@ -244,6 +244,15 @@ const schema = {
         })
         .required()
         .description('Exam details'),
+    })
+    .required()
+    .description('Reschedule schema'),
+  cancelAppointment: joi
+    .object({
+      transactionId: joi
+        .number()
+        .integer()
+        .description('AppointmentId of the Exam')
     })
     .required()
     .description('Reschedule schema')

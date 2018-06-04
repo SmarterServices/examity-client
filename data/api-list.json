@@ -33,5 +33,10 @@
     "endpoint": "/examity/api/reschedule",
     "method": "PUT",
     "successCode": 4013
+  },
+  "cancelAppointment": {
+    "endpoint": "/examity/api/cancel/{transactionId}",
+    "method": "DELETE",
+    "successCode": 4008
   }
 }
