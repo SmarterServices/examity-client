@@ -301,6 +301,31 @@
         }
       }
     }
+  },
+  "cancelAppointment": {
+    "payload": {
+      "clientID": "test",
+      "secretKey": "test",
+      "host": "https://test.examity.com/SmarterServicesapi",
+      "transactionId": 990000015
+    },
+    "response": {
+      "valid": {
+        "statusCode": 4008,
+        "message": "Exam cancelled successfully.",
+        "timeStamp": "2018-06-04T07:14:40Z",
+        "appointmentInfo": {
+          "transactionId": 990000015,
+          "appointmentDate": "",
+          "status": "Cancelled"
+        }
+      },
+      "INTERNAL_SERVER_ERROR": {
+        "statusCode": 500,
+        "message": "Internal server error, please contact developers@examity.com",
+        "timeStamp": "2018-05-31T07:32:02Z",
+        "errorInfo": []
+      }
+    }
   }
-
 }
