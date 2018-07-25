@@ -327,5 +327,12 @@
         "errorInfo": []
       }
     }
+  },
+  "startExam": {
+    "payload": {
+      "actionUrl": "https://test.examity.com/smarterservices/login.aspx",
+      "userId": "USf02a012054b24d2bbac44749a89a6994",
+      "encryptionKey": "FJASDIFJAFIOAFSDJIOASDJFI123244"
+    }
   }
 }
