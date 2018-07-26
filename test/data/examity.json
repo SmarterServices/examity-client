@@ -337,7 +337,7 @@
   },
   "reviewExam": {
     "payload": {
-      "actionUrl": "https://test.examity.com/smarterservices/login.aspx",
+      "actionUrl": "http://test.examity.com/smarterservices/ViewExam.aspx?Transid={transactionId}",
       "transactionId": "12345678941",
       "encryptionKey": "FJASDIFJAFIOAFSDJIOASDJFI123244"
     }

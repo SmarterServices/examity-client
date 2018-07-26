@@ -303,20 +303,7 @@ describe('Client', function testClient() {
   describe('Review Exam', function testClient() {
 
     const payload = examityData.reviewExam.payload;
-    const htmlBody = `<html lang="en">
-    <head>
-    </head>
-    <body>
-      <form name="login" method="Post" action="https://test.examity.com/smarterservices/login.aspx">
-        <input name="TransactionId" type="hidden" value="BtQF87fvoZSWm4vLCDORIw=="> 
-      </form>
-    </body>
-    <script type="text/javascript">
-        window.onload=function(){
-            document.forms["login"].submit();
-        }
-    </script>
-</html>`;
+    const url = 'http://test.examity.com/smarterservices/ViewExam.aspx?Transid=BtQF87fvoZSWm4vLCDORIw==';
 
 
     it('Should get [HTMLBody] for start exam request', () => {
@@ -324,7 +311,7 @@ describe('Client', function testClient() {
       return client
         .getReviewExamSSORequest(payload)
         .then((response) => {
-          expect(response.htmlBody).to.eql(htmlBody);
+          expect(response.url).to.eql(url);
         });
     });
 
