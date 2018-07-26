@@ -334,5 +334,12 @@
       "userId": "USf02a012054b24d2bbac44749a89a6994",
       "encryptionKey": "FJASDIFJAFIOAFSDJIOASDJFI123244"
     }
+  },
+  "reviewExam": {
+    "payload": {
+      "actionUrl": "https://test.examity.com/smarterservices/login.aspx",
+      "transactionId": "12345678941",
+      "encryptionKey": "FJASDIFJAFIOAFSDJIOASDJFI123244"
+    }
   }
 }
