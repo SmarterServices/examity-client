@@ -277,7 +277,7 @@ describe('Client', function testClient() {
     </head>
     <body>
       <form name="login" method="Post" action="https://test.examity.com/smarterservices/login.aspx">
-        <input name="UserName" type="hidden" value="wOqEKbPR/BTuKb2U11N7BGPDca7G+qhuWOD8OcpBjAKu97Mhv3tVYquYvcJhaTp1">
+        <input name="UserName" type="hidden" value="wOqEKbPR/BTuKb2U11N7BGPDca7G+qhuWOD8OcpBjAKu97Mhv3tVYquYvcJhaTp1"> 
       </form>
     </body>
     <script type="text/javascript">
@@ -292,6 +292,37 @@ describe('Client', function testClient() {
 
       return client
         .getStartExamSSORequest(payload)
+        .then((response) => {
+          expect(response.htmlBody).to.eql(htmlBody);
+        });
+    });
+
+  });
+
+
+  describe('Review Exam', function testClient() {
+
+    const payload = examityData.reviewExam.payload;
+    const htmlBody = `<html lang="en">
+    <head>
+    </head>
+    <body>
+      <form name="login" method="Post" action="https://test.examity.com/smarterservices/login.aspx">
+        <input name="TransactionId" type="hidden" value="BtQF87fvoZSWm4vLCDORIw=="> 
+      </form>
+    </body>
+    <script type="text/javascript">
+        window.onload=function(){
+            document.forms["login"].submit();
+        }
+    </script>
+</html>`;
+
+
+    it('Should get [HTMLBody] for start exam request', () => {
+
+      return client
+        .getReviewExamSSORequest(payload)
         .then((response) => {
           expect(response.htmlBody).to.eql(htmlBody);
         });
