@@ -45,9 +45,13 @@ const examInfo = {
   examDuration: 30,
   examPassword: 'S@mp!e31024567',
   timeZone: 78,
-  examDate: '2018-06-08T06:00:00Z',
+  examDate: '2018-12-12T06:00:00Z',
   examInstruction: 'Rule1',
   examLevel: '1'
+};
+
+const getUserProfilePayload = {
+  userId: '101'
 };
 
 client
@@ -58,7 +62,8 @@ client
 // .listCourseExam(Object.assign({}, credentials, listCoursePayload))
 // .scheduleAppointment(Object.assign({}, credentials, schedulePayload, {courseInfo, examInfo}))
 // .rescheduleAppointment(Object.assign({}, credentials, {courseInfo, examInfo, transactionId: 990000015}))
-  .cancelAppointment(Object.assign({}, credentials, {transactionId: 990000015}))
+// .cancelAppointment(Object.assign({}, credentials, {transactionId: 990000015}))
+.getUserProfile(Object.assign({}, credentials, getUserProfilePayload))
   .then(response => {
     console.log(JSON.stringify(response, null, 2));
   })

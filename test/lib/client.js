@@ -299,7 +299,6 @@ describe('Client', function testClient() {
 
   });
 
-
   describe('Review Exam', function testClient() {
 
     const payload = examityData.reviewExam.payload;
@@ -317,5 +316,62 @@ describe('Client', function testClient() {
 
   });
 
+  describe('Get User Profile', function testClient() {
+
+    const payload = examityData.getUserProfile.payload;
+
+    before('Create Mocker', function () {
+      examityMock.postEndpointMocker('getToken');
+      examityMock.getEndpointMocker('getUserProfile', 'valid', 200, {userId: payload.userId});
+    });
+
+    it('Should get the user profile information', () => {
+      return client
+        .getUserProfile(payload)
+        .then((response)=>{
+          expect(response).to.eql(examityData.getUserProfile.response.valid);
+        });
+    });
+
+    it('Should fail to get user profile information for internal server error', () => {
+      examityMock.reset();
+      examityMock.postEndpointMocker('getToken');
+      examityMock.getEndpointMocker('getUserProfile', 'INTERNAL_SERVER_ERROR', 500, {userId: payload.userId});
+      return client
+        .getUserProfile(payload)
+        .then(Promise.reject.bind(Promise))
+        .catch((error)=>{
+          expect(error.statusCode).to.eql(examityData.getUserProfile.response.INTERNAL_SERVER_ERROR.statusCode);
+          expect(error.error.message).to.eql(examityData.getUserProfile.response.INTERNAL_SERVER_ERROR.message);
+        });
+    });
+
+    it('Should fail to get user profile information for invalid access token', () => {
+      examityMock.reset();
+      examityMock.postEndpointMocker('getToken');
+      examityMock.getEndpointMocker('getUserProfile', 'INVALID_ACCESS_TOKEN', 401, {userId: payload.userId});
+      return client
+        .getUserProfile(payload)
+        .then(Promise.reject.bind(Promise))
+        .catch((error)=>{
+          expect(error.statusCode).to.eql(examityData.getUserProfile.response.INVALID_ACCESS_TOKEN.statusCode);
+          expect(error.error.message).to.eql(examityData.getUserProfile.response.INVALID_ACCESS_TOKEN.message);
+        });
+    });
+
+    it('Should fail to get user profile information for no authorization header', () => {
+      examityMock.reset();
+      examityMock.postEndpointMocker('getToken');
+      examityMock.getEndpointMocker('getUserProfile', 'AUTHORIZATION_HEADER_NEEDED', 402, {userId: payload.userId});
+      return client
+        .getUserProfile(payload)
+        .then(Promise.reject.bind(Promise))
+        .catch((error)=>{
+          expect(error.statusCode).to.eql(examityData.getUserProfile.response.AUTHORIZATION_HEADER_NEEDED.statusCode);
+          expect(error.error.message).to.eql(examityData.getUserProfile.response.AUTHORIZATION_HEADER_NEEDED.message);
+        });
+    });
+
+  });
 
 });
