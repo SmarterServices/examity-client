@@ -38,5 +38,10 @@
     "endpoint": "/examity/api/cancel/{transactionId}",
     "method": "DELETE",
     "successCode": 4008
+  },
+  "getUserProfile": {
+    "endpoint": "/examity/api/user/{userId}/profile",
+    "method": "GET",
+    "successCode": 1000
   }
 }

@@ -255,7 +255,14 @@ const schema = {
         .description('AppointmentId of the Exam')
     })
     .required()
-    .description('Reschedule schema')
+    .description('Reschedule schema'),
+  getUserProfile: joi
+    .object({
+      userId: joi
+        .string()
+        .required()
+        .description('ID of the user')
+    })
 
 };
 
