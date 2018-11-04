@@ -43,5 +43,10 @@
     "endpoint": "/examity/api/user/{userId}/profile",
     "method": "GET",
     "successCode": 1000
+  },
+  "getExamStatus": {
+    "endpoint": "/examity/api/exams/{transactionId}",
+    "method": "GET",
+    "successCode": 3006
   }
 }

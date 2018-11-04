@@ -118,7 +118,7 @@ describe('Client', function testClient() {
     it('Should list timezone', () => {
       return client
         .listExamTimes(payload)
-        .then((response)=>{
+        .then((response) => {
           expect(response).to.eql(examityData.listExamTimes.response.valid);
         });
     });
@@ -130,7 +130,7 @@ describe('Client', function testClient() {
       return client
         .listExamTimes(payload)
         .then(Promise.reject.bind(Promise))
-        .catch((error)=>{
+        .catch((error) => {
           expect(error.statusCode).to.eql(examityData.listExamTimes.response.UNAVAILABLE_INFORMATION.statusCode);
           expect(error.message).to.eql(examityData.listExamTimes.response.UNAVAILABLE_INFORMATION.message);
         });
@@ -150,7 +150,7 @@ describe('Client', function testClient() {
     it('Should schedule appointment', () => {
       return client
         .scheduleAppointment(payload)
-        .then((response)=>{
+        .then((response) => {
           expect(response).to.eql(examityData[apiName].response.valid);
         });
     });
@@ -162,7 +162,7 @@ describe('Client', function testClient() {
       return client
         .scheduleAppointment(payload)
         .then(Promise.reject.bind(Promise))
-        .catch((error)=>{
+        .catch((error) => {
           expect(error.statusCode).to.eql(examityData[apiName].response.ALREADY_SCHEDULED.statusCode);
           expect(error.message).to.eql(examityData[apiName].response.ALREADY_SCHEDULED.message);
         });
@@ -182,7 +182,7 @@ describe('Client', function testClient() {
     it('Should reschedule appointment', () => {
       return client
         .rescheduleAppointment(payload)
-        .then((response)=>{
+        .then((response) => {
           expect(response).to.eql(examityData[apiName].response.valid);
         });
     });
@@ -194,7 +194,7 @@ describe('Client', function testClient() {
       return client
         .rescheduleAppointment(payload)
         .then(Promise.reject.bind(Promise))
-        .catch((error)=>{
+        .catch((error) => {
           expect(error.statusCode).to.eql(examityData[apiName].response.NOT_ALLOWED.statusCode);
           expect(error.message).to.eql(examityData[apiName].response.NOT_ALLOWED.message);
         });
@@ -328,7 +328,7 @@ describe('Client', function testClient() {
     it('Should get the user profile information', () => {
       return client
         .getUserProfile(payload)
-        .then((response)=>{
+        .then((response) => {
           expect(response).to.eql(examityData.getUserProfile.response.valid);
         });
     });
@@ -340,7 +340,7 @@ describe('Client', function testClient() {
       return client
         .getUserProfile(payload)
         .then(Promise.reject.bind(Promise))
-        .catch((error)=>{
+        .catch((error) => {
           expect(error.statusCode).to.eql(examityData.getUserProfile.response.INTERNAL_SERVER_ERROR.statusCode);
           expect(error.error.message).to.eql(examityData.getUserProfile.response.INTERNAL_SERVER_ERROR.message);
         });
@@ -353,7 +353,7 @@ describe('Client', function testClient() {
       return client
         .getUserProfile(payload)
         .then(Promise.reject.bind(Promise))
-        .catch((error)=>{
+        .catch((error) => {
           expect(error.statusCode).to.eql(examityData.getUserProfile.response.INVALID_ACCESS_TOKEN.statusCode);
           expect(error.error.message).to.eql(examityData.getUserProfile.response.INVALID_ACCESS_TOKEN.message);
         });
@@ -366,11 +366,57 @@ describe('Client', function testClient() {
       return client
         .getUserProfile(payload)
         .then(Promise.reject.bind(Promise))
-        .catch((error)=>{
+        .catch((error) => {
           expect(error.statusCode).to.eql(examityData.getUserProfile.response.AUTHORIZATION_HEADER_NEEDED.statusCode);
           expect(error.error.message).to.eql(examityData.getUserProfile.response.AUTHORIZATION_HEADER_NEEDED.message);
         });
     });
+
+  });
+
+  describe('Get Exam Status', function testClient() {
+
+    const payload = examityData.getExamStatus.payload;
+
+    before('Create Mocker', function () {
+      examityMock.postEndpointMocker('getToken');
+      examityMock.getEndpointMocker('getExamStatus', 'valid', 200, {transactionId: payload.transactionId});
+    });
+
+    it('Should get the exam status ', () => {
+      return client
+        .getExamStatus(payload)
+        .then((response) => {
+          expect(response).to.eql(examityData.getExamStatus.response.valid.appointmentStatusInfo.appointmentStatus[0]);
+        });
+    });
+
+    it('Should fail to get exam status for internal server error', () => {
+      examityMock.reset();
+      examityMock.postEndpointMocker('getToken');
+      examityMock.getEndpointMocker('getExamStatus', 'INTERNAL_SERVER_ERROR', 500, {transactionId: payload.transactionId});
+      return client
+        .getExamStatus(payload)
+        .then(Promise.reject.bind(Promise))
+        .catch((error) => {
+          expect(error.statusCode).to.eql(examityData.getExamStatus.response.INTERNAL_SERVER_ERROR.statusCode);
+          expect(error.error.message).to.eql(examityData.getExamStatus.response.INTERNAL_SERVER_ERROR.message);
+        });
+    });
+
+    it('Should fail to get exam status for cancelled exam', () => {
+      examityMock.reset();
+      examityMock.postEndpointMocker('getToken');
+      examityMock.getEndpointMocker('getExamStatus', 'COURSE_DETAILS_NOT_FOUND', 401, {transactionId: payload.transactionId});
+      return client
+        .getExamStatus(payload)
+        .then(Promise.reject.bind(Promise))
+        .catch((error) => {
+          expect(error.error.statusCode).to.eql(examityData.getExamStatus.response.COURSE_DETAILS_NOT_FOUND.statusCode);
+          expect(error.error.message).to.eql(examityData.getExamStatus.response.COURSE_DETAILS_NOT_FOUND.message);
+        });
+    });
+
 
   });
 
