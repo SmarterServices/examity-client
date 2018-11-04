@@ -1,0 +1,47 @@
+{
+  "getTimezone": {
+    "endpoint": "/examity/api/timezone",
+    "method": "GET",
+    "successCode": 4002
+  },
+  "getToken": {
+    "endpoint": "/examity/api/token",
+    "method": "POST",
+    "successCode": 5000
+  },
+  "listCourseExam": {
+    "endpoint": "/examity/api/exams/course/{courseId}/page/{pagenum}",
+    "method": "GET",
+    "successCode": 3006
+  },
+  "listUserExam": {
+    "endpoint": "/examity/api/exams/page/{pagenum}",
+    "method": "POST",
+    "successCode": 3006
+  },
+  "listExamTimes": {
+    "endpoint": "/examity/api/examtimes",
+    "method": "POST",
+    "successCode": 4000
+  },
+  "scheduleAppointment": {
+    "endpoint": "/examity/api/schedule",
+    "method": "POST",
+    "successCode": 4004
+  },
+  "rescheduleAppointment": {
+    "endpoint": "/examity/api/reschedule",
+    "method": "PUT",
+    "successCode": 4013
+  },
+  "cancelAppointment": {
+    "endpoint": "/examity/api/cancel/{transactionId}",
+    "method": "DELETE",
+    "successCode": 4008
+  },
+  "getUserProfile": {
+    "endpoint": "/examity/api/user/{userId}/profile",
+    "method": "GET",
+    "successCode": 1000
+  }
+}

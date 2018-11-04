@@ -1,0 +1,391 @@
+{
+  "getToken": {
+    "payload": {
+      "clientID": "test",
+      "secretKey": "test",
+      "host": "https://test.examity.com/SmarterServicesapi"
+    },
+    "response": {
+      "valid": {
+        "statusCode": 5000,
+        "message": "Authentication.",
+        "timeStamp": "2018-05-31T08:44:53Z",
+        "authInfo": {
+          "clientID": "",
+          "secretKey": "",
+          "access_token": "1231545154512"
+        }
+      }
+    }
+  },
+  "getTimezone": {
+    "response": {
+      "valid": {
+        "statusCode": 4002,
+        "message": "Avaliable Timezones.",
+        "timeStamp": "2018-05-31T13:25:06Z",
+        "timezoneInfo": [
+          {
+            "id": 1,
+            "timezone": "Casablanca (UTC+01:00)"
+          },
+          {
+            "id": 2,
+            "timezone": "Coordinated Universal Time (UTC+00:00) "
+          }
+        ]
+      },
+      "INTERNAL_SERVER_ERROR": {
+        "statusCode": 500,
+        "message": "Internal server error, please contact developers@examity.com",
+        "timeStamp": "2018-05-31T07:32:02Z",
+        "errorInfo": []
+      }
+    }
+  },
+  "listCourseExam": {
+    "payload": {
+      "clientID": "test",
+      "secretKey": "test",
+      "host": "https://test.examity.com/SmarterServicesapi",
+      "courseId": "SamepleCourse_101",
+      "pagenum": 1
+    },
+    "response": {
+      "valid": {
+        "statusCode": 3006,
+        "message": "User Appointmentstaus.",
+        "timeStamp": "2018-06-03T10:46:45Z",
+        "appointmentStatusInfo": {
+          "currentpage": 1,
+          "pagecount": 1,
+          "appointmentStatus": [
+            {
+              "userInfo": {
+                "userId": "101",
+                "firstName": "Sample",
+                "lastName": "User",
+                "emailAddress": "sample_user@example.com"
+              },
+              "appointmentInfo": {
+                "transactionId": "990000014",
+                "courseId": "SamepleCourse_101",
+                "courseName": "Sample Course",
+                "examId": "101",
+                "examName": "Sample Quiz",
+                "examURL": "http://www.proprofs.com",
+                "examDuration": 30,
+                "examPassword": "S@mp!e31024567",
+                "examUserName": "",
+                "timeZone": "78",
+                "examDate": "2018-06-03T06:45:00",
+                "examInstruction": "Rule1|Rule2|Rule3",
+                "status": "Active",
+                "examLevel": null,
+                "examStatus": "No-show",
+                "flaginfo": []
+              }
+            }
+          ]
+        }
+      },
+      "INTERNAL_SERVER_ERROR": {
+        "statusCode": 500,
+        "message": "Internal server error, please contact developers@examity.com",
+        "timeStamp": "2018-05-31T07:32:02Z",
+        "errorInfo": []
+      }
+    }
+  },
+  "listUserExam": {
+    "payload": {
+      "clientID": "test",
+      "secretKey": "test",
+      "host": "https://test.examity.com/SmarterServicesapi",
+      "courseId": "SamepleCourse_101",
+      "userId": "User_101",
+      "pagenum": 1
+    },
+    "response": {
+      "valid": {
+        "statusCode": 3006,
+        "message": "User Appointmentstaus.",
+        "timeStamp": "2018-06-03T10:46:45Z",
+        "appointmentStatusInfo": {
+          "currentpage": 1,
+          "pagecount": 1,
+          "appointmentStatus": [
+            {
+              "userInfo": {
+                "userId": "101",
+                "firstName": "Sample",
+                "lastName": "User",
+                "emailAddress": "sample_user@example.com"
+              },
+              "appointmentInfo": {
+                "transactionId": "990000014",
+                "courseId": "SamepleCourse_101",
+                "courseName": "Sample Course",
+                "examId": "101",
+                "examName": "Sample Quiz",
+                "examURL": "http://www.proprofs.com",
+                "examDuration": 30,
+                "examPassword": "S@mp!e31024567",
+                "examUserName": "",
+                "timeZone": "78",
+                "examDate": "2018-06-03T06:45:00",
+                "examInstruction": "Rule1|Rule2|Rule3",
+                "status": "Active",
+                "examLevel": null,
+                "examStatus": "No-show",
+                "flaginfo": []
+              }
+            }
+          ]
+        }
+      },
+      "INTERNAL_SERVER_ERROR": {
+        "statusCode": 500,
+        "message": "Internal server error, please contact developers@examity.com",
+        "timeStamp": "2018-05-31T07:32:02Z",
+        "errorInfo": []
+      }
+    }
+  },
+  "listExamTimes": {
+    "payload": {
+      "valid": {
+        "userId": "101",
+        "timeZone": 78,
+        "examDate": "06/03/2018",
+        "examDuration": 10
+      }
+    },
+    "response": {
+      "valid": {
+        "statusCode": 4000,
+        "message": "Avaliable ExamTimes.",
+        "timeStamp": "2018-06-03T09:45:53Z",
+        "timeInfo": [
+          "06:00 AM",
+          "06:30 AM",
+          "07:00 AM",
+          "07:30 AM",
+          "08:00 AM",
+          "08:30 AM",
+          "09:00 AM",
+          "09:30 AM",
+          "10:00 AM",
+          "10:30 AM",
+          "11:00 AM",
+          "11:30 AM",
+          "12:00 PM",
+          "12:30 PM",
+          "01:00 PM",
+          "01:30 PM",
+          "02:00 PM",
+          "02:30 PM",
+          "03:00 PM",
+          "03:30 PM",
+          "04:00 PM",
+          "04:30 PM",
+          "05:00 PM",
+          "05:30 PM",
+          "06:00 PM",
+          "06:30 PM",
+          "07:00 PM",
+          "07:30 PM",
+          "08:00 PM",
+          "08:30 PM",
+          "09:00 PM",
+          "09:30 PM",
+          "10:00 PM",
+          "10:30 PM",
+          "11:00 PM",
+          "11:30 PM"
+        ]
+      },
+      "UNAVAILABLE_INFORMATION": {
+        "statusCode": 4001,
+        "message": "ExamTime information not avaliable.",
+        "timeStamp": "2018-06-03T09:47:48Z",
+        "timeInfo": []
+      }
+    }
+  },
+  "scheduleAppointment": {
+    "payload": {
+      "valid": {
+        "userInfo": {
+          "userId": "101",
+          "firstName": "Sample",
+          "lastName": "User",
+          "emailAddress": "sample_user@example.com"
+        },
+        "courseInfo": {
+          "courseId": "SamepleCourse_101",
+          "courseName": "Sample Course"
+        },
+        "examInfo": {
+          "examId": "101",
+          "examName": "Sample Quiz",
+          "examURL": "http://www.proprofs.com",
+          "examDuration": 30,
+          "examPassword": "S@mp!e31024567",
+          "timeZone": "78",
+          "examDate": "2018-06-04T06:00:00Z",
+          "examInstruction": "Rule1|Rule2|Rule3",
+          "examLevel": "1"
+        }
+      }
+    },
+    "response": {
+      "valid": {
+        "statusCode": 4004,
+        "message": "Exam scheduled successfully.",
+        "timeStamp": "2018-06-03T11:20:20Z",
+        "appointmentInfo": {
+          "transactionId": 990000019,
+          "appointmentDate": "2018-06-06T06:00:00Z",
+          "status": "Scheduled"
+        }
+      },
+      "ALREADY_SCHEDULED": {
+        "statusCode": 4007,
+        "message": "Exam is already scheduled on appointment date.",
+        "timeStamp": "2018-06-03T09:47:48Z",
+        "timeInfo": []
+      }
+    }
+  },
+  "rescheduleAppointment": {
+    "payload": {
+      "valid": {
+        "transactionId": 990000015,
+        "courseInfo": {
+          "courseId": "SamepleCourse_101",
+          "courseName": "Sample Course"
+        },
+        "examInfo": {
+          "examId": "101",
+          "examName": "Sample Quiz",
+          "examURL": "http://www.proprofs.com",
+          "examDuration": 30,
+          "examPassword": "S@mp!e31024567",
+          "timeZone": "78",
+          "examDate": "2018-06-04T06:00:00Z",
+          "examInstruction": "Rule1|Rule2|Rule3",
+          "examLevel": "1"
+        }
+      }
+    },
+    "response": {
+      "valid": {
+        "statusCode": 4013,
+        "message": "Exam rescheduled successfully.",
+        "timeStamp": "2018-06-03T12:05:10Z",
+        "appointmentInfo": {
+          "transactionId": 990000015,
+          "appointmentDate": "2018-06-09T06:00:00Z",
+          "status": "Rescheduled"
+        }
+      },
+      "NOT_ALLOWED": {
+        "statusCode": 4014,
+        "message": "Exam already scheduled in current time window. Rescheduling is not allowed.",
+        "timeStamp": "2018-06-03T12:05:29Z",
+        "appointmentInfo": {
+          "transactionId": 0,
+          "appointmentDate": "",
+          "status": ""
+        }
+      }
+    }
+  },
+  "cancelAppointment": {
+    "payload": {
+      "clientID": "test",
+      "secretKey": "test",
+      "host": "https://test.examity.com/SmarterServicesapi",
+      "transactionId": 990000015
+    },
+    "response": {
+      "valid": {
+        "statusCode": 4008,
+        "message": "Exam cancelled successfully.",
+        "timeStamp": "2018-06-04T07:14:40Z",
+        "appointmentInfo": {
+          "transactionId": 990000015,
+          "appointmentDate": "",
+          "status": "Cancelled"
+        }
+      },
+      "INTERNAL_SERVER_ERROR": {
+        "statusCode": 500,
+        "message": "Internal server error, please contact developers@examity.com",
+        "timeStamp": "2018-05-31T07:32:02Z",
+        "errorInfo": []
+      }
+    }
+  },
+  "startExam": {
+    "payload": {
+      "actionUrl": "https://test.examity.com/smarterservices/login.aspx",
+      "userId": "USf02a012054b24d2bbac44749a89a6994",
+      "encryptionKey": "FJASDIFJAFIOAFSDJIOASDJFI123244"
+    }
+  },
+  "reviewExam": {
+    "payload": {
+      "actionUrl": "http://test.examity.com/smarterservices/ViewExam.aspx?Transid={transactionId}",
+      "transactionId": "12345678941",
+      "encryptionKey": "FJASDIFJAFIOAFSDJIOASDJFI123244"
+    }
+  },
+  "getUserProfile": {
+    "payload": {
+      "clientID": "test",
+      "secretKey": "test",
+      "host": "https://test.examity.com/SmarterServicesapi",
+      "userId": "User_101"
+    },
+    "response": {
+      "valid": {
+        "statusCode": 1000,
+        "message": "User details.",
+        "timeStamp": "2018-08-14T08:47:01Z",
+        "profileInfo": {
+          "userId": "101",
+          "firstName": "Sample",
+          "lastName": "User",
+          "emailAddress": "sample_user@example.com",
+          "timezone": "",
+          "phoneNumber": "",
+          "profileCompleted": "No"
+        }
+      },
+      "INTERNAL_SERVER_ERROR": {
+        "statusCode": 500,
+        "message": "Internal server error, please contact developers@examity.com",
+        "timeStamp": "2018-05-31T07:32:02Z",
+        "errorInfo": []
+      },
+      "INVALID_ACCESS_TOKEN": {
+        "statusCode": 401,
+        "message": "Invalid access token.",
+        "timeStamp": "2015-01-22T10:24:34Z",
+        "errorInfo": [
+          "Invalid access token."
+        ]
+      },
+      "AUTHORIZATION_HEADER_NEEDED": {
+        "statusCode": 402,
+        "message": "No header.",
+        "timeStamp": "2015-01-22T10:24:34Z",
+        "errorInfo": [
+          "Authentication header is required."
+        ]
+      }
+    }
+  }
+}
