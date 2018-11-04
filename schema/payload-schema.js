@@ -262,6 +262,13 @@ const schema = {
         .string()
         .required()
         .description('ID of the user')
+    }),
+  getExamStatus: joi
+    .object({
+      transactionId: joi
+        .number()
+        .integer()
+        .description('AppointmentId of the Exam.')
     })
 
 };

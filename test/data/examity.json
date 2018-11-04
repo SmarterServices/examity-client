@@ -387,5 +387,68 @@
         ]
       }
     }
+  },
+  "getExamStatus": {
+    "payload": {
+      "clientID": "test",
+      "secretKey": "test",
+      "host": "https://test.examity.com/SmarterServicesapi",
+      "transactionId": "12345678941"
+    },
+    "response": {
+      "valid": {
+        "statusCode": 3006,
+        "message": "User Appointmentstaus.",
+        "timeStamp": "2018-11-04T06:42:44Z",
+        "appointmentStatusInfo": {
+          "currentpage": 1,
+          "pagecount": 1,
+          "appointmentStatus": [
+            {
+              "userInfo": {
+                "userId": "101",
+                "firstName": "Sample",
+                "lastName": "User",
+                "emailAddress": "sample_user@example.com"
+              },
+              "appointmentInfo": {
+                "transactionId": "990010192",
+                "courseId": "SamepleCourse_101",
+                "courseName": "Sample Course",
+                "examId": "103",
+                "examName": "Sample Quiz",
+                "examURL": "http://www.proprofs.com",
+                "examDuration": 30,
+                "examPassword": "S@mp!e31024567",
+                "examUserName": "",
+                "timeZone": "78",
+                "examDate": "2018-12-12T06:00:00",
+                "examInstruction": "Rule1",
+                "status": "Active",
+                "examLevel": "1",
+                "examStatus": "Scheduled",
+                "flaginfo": []
+              }
+            }
+          ]
+        }
+      },
+      "INTERNAL_SERVER_ERROR": {
+        "statusCode": 500,
+        "message": "Internal server error, please contact developers@examity.com",
+        "timeStamp": "2018-05-31T07:32:02Z",
+        "errorInfo": []
+      },
+      "COURSE_DETAILS_NOT_FOUND": {
+        "statusCode": 2008,
+        "message": "Course details not found.",
+        "timeStamp": "2018-11-04T06:57:03Z",
+        "appointmentStatusInfo": {
+          "currentpage": 1,
+          "pagecount": 0,
+          "appointmentStatus": []
+        }
+      }
+    }
   }
 }
